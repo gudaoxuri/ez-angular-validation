@@ -1,0 +1,8 @@
+{
+  "name": "ez-angular-validation",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular": "~1.4.1",
+    "bootstrap": "~3.3.5"
+  }
+}

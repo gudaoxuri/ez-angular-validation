@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../src/ez-angular-validation.js"></script>
+    <script src="index.js"></script>
+
+</head>
+<body ng-app="validationTest">
+<div ng-controller="basicTest">
+    <div class="container">
+        <h2>Basic Test</h2>
+        <form name="basicForm"  class="form-horizontal" novalidate>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name</label>
+
+                <div class="col-sm-10">
+                    <input name="name" type="text" class="form-control" ng-model="t.name" ng-minlength="3" ng-maxlength="8" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Start Hours</label>
+
+                <div class="col-sm-10">
+                    <input name="start_time" type="number" class="form-control" ng-model="t.start_time" min="0" max="23" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">End Hours</label>
+
+                <div class="col-sm-10">
+                    <input name="end_time" type="number"  class="form-control" ng-model="t.end_time" r-msg="请输入0-24间的数字"
+                           pattern="(([0-9])|(1\d)|(2[0-3]))" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email</label>
+
+                <div class="col-sm-10">
+                    <input name="email" type="email" ng-model="t.email" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Use Rule ?</label>
+
+                <div class="col-sm-10">
+                   <input name="use_rule" type="checkbox" ng-model="t.useRule">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Rule</label>
+
+                <div class="col-sm-10">
+                    <select name="rule_id"  class="form-control" ng-model="t.rule_id" ng-if="t.useRule==true"
+                            ng-options="a.id as a.name for a in i_strategy_opts" required></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
