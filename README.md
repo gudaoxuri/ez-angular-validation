@@ -19,8 +19,8 @@ AngularJS 1.4.x 原生表单验证扩展
  最大最小长度 | min/max |  &lt; input name="demo" ng-model="demo" ng-minlength="3" ng-maxlength="8"  class="form-control" /&gt;
 正则 | pattern [r-msg] |  &lt; input name="demo" ng-model="demo" pattern="(([0-9])|(1\d)|(2[0-3]))" r-msg="请输入0-24间的数字"  class="form-control" /&gt;
 
-* r-msg : 自定义正则错误提示，可以不写
-* 带条件的验证：如当xx条件成立时需要验证，否则不需要：
+* `r-msg` : 自定义正则错误提示，可以不写
+* 使用 `ng-if` 或 `ng-show` 处理带条件的验证：如当xx条件成立时需要验证，否则不需要：
 
          <input name="demo" ng-model="demo" required class="form-control" ng-if="otherModelName==true" />
 

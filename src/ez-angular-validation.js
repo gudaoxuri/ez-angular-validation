@@ -78,13 +78,17 @@ angular.module('ez-angular-validation')
             $('form[name=' + _formName + '] .form-control').each(function () {
                 $(this).removeAttr('data-content');
             });
+            var isPass=true;
             angular.forEach(_$form.$error, function (eles, ttype) {
                 for (var i = 0; i < eles.length; i++) {
                     var ele = angular.element(document.querySelectorAll('[name=' + eles[i].$name + ']'));
-                    addErrorMsg(ttype, ele);
+                    if(!ele.attr('ng-show') || _$scope.$eval(ele.attr('ng-show'))) {
+                        addErrorMsg(ttype, ele);
+                        isPass=false;
+                    }
                 }
             });
-            return _$form.$valid;
+            return isPass;
         }
 
         return {
